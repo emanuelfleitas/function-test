@@ -2,11 +2,11 @@ const {UsuarioAdmin} = require("./UsuarioAdmin.js")
 
 exports.usuarioCreacionController = usuario => {
     const usuarioAdmin = new UsuarioAdmin()
-    return usuarioAdmin.enviarEmailBienvenida(usuario.displayName,usuario.email).then((r)=>{
-        return usuarioAdmin.registrarEmailUsuario(usuario.displayName,usuario.email)
-    }).catch(error=>{
-       console.log(error); 
-    })
+    // return usuarioAdmin.enviarEmailBienvenida(usuario.displayName,usuario.email).then((r)=>{
+    return usuarioAdmin.registrarEmailsUsuario(usuario.displayName,usuario.email)
+    // }).catch(error=>{
+    //    console.log(error); 
+    // })
 }
  
 exports.usuarioEliminadoController = usuario => {
@@ -19,6 +19,7 @@ exports.usuarioEliminadoController = usuario => {
 exports.creacionUsuarioCRM = usuario => {
     const usuarioAdmin = new UsuarioAdmin()
     return usuarioAdmin.sincronizarCRM(
+        usuario.displayName,
         usuario.displayName,
         usuario.email
     )
